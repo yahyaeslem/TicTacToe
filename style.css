@@ -1,0 +1,24 @@
+.gameboard{
+    display: grid;
+    grid-template-rows: repeat(3,50px);
+    grid-template-columns: repeat(3,50px);
+width: fit-content;
+border-color: blue;
+border-style: solid;
+gap: 0;
+border-width: 1px;
+    
+
+}
+.square{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  outline-style: solid;
+  outline-width: 1px;
+ font-size: 20px;
+
+  padding: 0;
+  margin: 0;
+  
+}
