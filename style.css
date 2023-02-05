@@ -3,24 +3,15 @@
     grid-template-rows: repeat(3,100x);
     grid-template-columns: repeat(3,100px);
 ;
-width: fit-content;
-border-color: blue;
-border-style: solid;
+
+
 gap: 0;
-border-width: 1px;
+
     
 
 }
-.square{
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-  outline-style: solid;
-  outline-width: 1px;
- font-size: 20px;
-
-  padding: 0;
-  margin: 0;
-  
+.gameboard div{
+  aspect-ratio: 1;  
+  border-color: black;
+  border-style: solid;
 }

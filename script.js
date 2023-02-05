@@ -2,9 +2,9 @@ const square = document.getElementsByClassName('square');
 // Gameboard Object Module
 var Gameboard = (()=> {
 
-var gameboard = [square[0].innerHTML,"O","X"
-                ,"X","O","X"
-                ,"X","O","X"];
+var gameboard = [square[0].innerHTML,square[0].innerHTML,square[0].innerHTML
+                ,square[0].innerHTML,square[0].innerHTML,square[0].innerHTML
+                ,square[0].innerHTML,square[0].innerHTML,square[0].innerHTML];
 
  const sq=(index)=> gameboard[index];
 return{
@@ -18,9 +18,8 @@ return{
 const Player= (name)=>{
     const getName =()=>  currentPlayer;
     const getScore = ()=> score;
-    let currentPlayer = name || "playerOne"
-    let playerOne ="playerOne"
-    let playerTwo = "playerTwo"
+    // let currentPlayer = name || "playerOne"
+   
 return {getName, getScore};
 }
 // let currentPlayer = Player("playerOne").getName()
@@ -37,7 +36,7 @@ for(let i=0 ; i<9; i++){
 // Event listerer for click and render "X" "O" 
   document.addEventListener("click", function(e){
    
-    const target = e.target.closest(".square"); // Or any other selector.
+    const target = e.target.closest(".square"); 
     if(target){
        
     
@@ -46,15 +45,16 @@ for(let i=0 ; i<9; i++){
         if(e.target.innerHTML === "")
         {
             e.target.innerHTML = "O"
-            currentPlayer = Player("playerOne").getName()
+            
         }
+        currentPlayer="playerOne"
       }  
-      elseif(currentPlayer="playerOne")
+      else
       {
           if(e.target.innerHTML === "")
           {
               e.target.innerHTML = "X"
-              currentPlayer = Player("playerTwo").getName()
+              currentPlayer = "playerTwo"
           };
       }
 
