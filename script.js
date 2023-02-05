@@ -1,55 +1,64 @@
+const square = document.getElementsByClassName('square');
 // Gameboard Object Module
-const moduleGameboard = (() => {
+var Gameboard = (()=> {
 
-var Gameboard = function (){
-  boardRow1=  ["X","O","X"] 
-  boardRow2=   ["X","O","X"]
-  boardRow3=   ["X","O","X"]
-return {
-    boardRow1,
-    boardRow2,
-    boardRow3,
-}
-};
-function _displayBoard(){
-    console.log(Gameboard());
-}
+var gameboard = [square[0].innerHTML,"O","X"
+                ,"X","O","X"
+                ,"X","O","X"];
+
+ const sq=(index)=> gameboard[index];
 return{
-publicBoard: function(){
-    _displayBoard()
-}
-}
+    sq,
+  }
 
 })();
 
 
 //Player Object
-var Players= (playerName,level)=>{
-    const getSign =() => sign
-    const evaulate=() => evaluate
-    const getScore = () => score
-return {playerName,sign,evaluate,score};
+const Player= (name)=>{
+    const getName =()=>  currentPlayer;
+    const getScore = ()=> score;
+    let currentPlayer = name || "playerOne"
+    let playerOne ="playerOne"
+    let playerTwo = "playerTwo"
+return {getName, getScore};
 }
-    
+// let currentPlayer = Player("playerOne").getName()
 
-const square = document.getElementsByClassName('square');
+let currentPlayer;
 // function to reach Gameboard object
-const moduleGame =  moduleGameboard.publicBoard();
 
 for(let i=0 ; i<9; i++){
-    square[i].innerHTML= 
+    
+    
+    square[i].innerHTML = (Gameboard.sq(i))
 }
   
 // Event listerer for click and render "X" "O" 
   document.addEventListener("click", function(e){
+   
     const target = e.target.closest(".square"); // Or any other selector.
-  
     if(target){
-        if(e.target.innerHTML === ""){
-            e.target.innerHTML = "b"
-             }
-        
+       
+    
+      if(currentPlayer === "playerTwo")
+       {
+        if(e.target.innerHTML === "")
+        {
+            e.target.innerHTML = "O"
+            currentPlayer = Player("playerOne").getName()
+        }
+      }  
+      elseif(currentPlayer="playerOne")
+      {
+          if(e.target.innerHTML === "")
+          {
+              e.target.innerHTML = "X"
+              currentPlayer = Player("playerTwo").getName()
+          };
+      }
+
     }
-  });
-// function to reach Gameboard object
- const module=  moduleGameboard.publicBoard();
+  }
+  
+  );
