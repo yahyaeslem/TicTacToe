@@ -2,11 +2,11 @@ const square = document.getElementsByClassName('square');
 // Gameboard Object Module
 var Gameboard = (()=> {
 
-var gameboard = [square[0].innerHTML,square[0].innerHTML,square[0].innerHTML
-                ,square[0].innerHTML,square[0].innerHTML,square[0].innerHTML
-                ,square[0].innerHTML,square[0].innerHTML,square[0].innerHTML];
+var gameboard = [square[0].innerHTML,square[1].innerHTML,square[2].innerHTML
+                ,square[3].innerHTML,square[4].innerHTML,square[5].innerHTML
+                ,square[6].innerHTML,square[7].innerHTML,square[8].innerHTML];
 
- const boardBox=(index)=> gameboard[index];
+ const boardBox=(index)=> gameboard[index]; //reach index array gameboard
 return{
     boardBox,
   }
@@ -14,12 +14,12 @@ return{
 })();
 
 let currentPlayer;
-//Player Object
+//Player Object ( returns "X" and "O")
 const Player= ()=>{
     const getName =()=>  currentPlayer;
-    const getScore = ()=> score;
+   
     const getSign = ()=> { 
-       getName()
+       getName() 
       if(currentPlayer === "playerTwo")
       {currentPlayer ="playerOne"
       return playerTwoSign;
@@ -39,14 +39,11 @@ const Player= ()=>{
     let playerTwo = "playerTwo"
 return {getName, getSign};
 }
-// let currentPlayer = Player("playerOne").getName()
 
 
-
-// function to reach Gameboard object
+//  returns string for render display
 var displayController = (()=>{
 const _renderDisplay= () => Player().getSign();
-
 
 return{ _renderDisplay
 }
@@ -97,3 +94,26 @@ return{ _renderDisplay
   
     }
   });
+
+
+  // Game Logic & Score
+  const getScore = ()=> 
+  var score= ()=>{
+    if(
+(square[0].innerHTML ===square[3].innerHTML&&square[0].innerHTML === square[6].innerHTML) || 
+(square[1].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[7].innerHTML) || 
+(square[2].innerHTML ===square[5].innerHTML&&square[5].innerHTML === square[8].innerHTML) ||
+(square[0].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[8].innerHTML) ||
+(square[2].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[6].innerHTML) ||
+(square[0].innerHTML ===square[1].innerHTML&&square[1].innerHTML === square[2].innerHTML) ||
+(square[3].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[5].innerHTML) ||
+(square[6].innerHTML ===square[7].innerHTML&&square[7].innerHTML === square[8].innerHTML)){
+    if(square.innerHTML === "X"){
+        player1wins ++
+    }
+    elseif(square.innerHTML === "O"){
+        player2wins ++
+    }
+}
+return score
+  }
