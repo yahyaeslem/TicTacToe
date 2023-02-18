@@ -1,4 +1,11 @@
 const square = document.getElementsByClassName('square');
+let player1wins;
+let player2wins;
+let winner;
+const displayBoard = document.getElementById('displayBoard');
+const restartButton = document.getElementById("restartButton") 
+let currentPlayer;
+
 // Gameboard Object Module
 var Gameboard = (()=> {
 
@@ -7,13 +14,36 @@ var gameboard = [square[0].innerHTML,square[1].innerHTML,square[2].innerHTML
                 ,square[6].innerHTML,square[7].innerHTML,square[8].innerHTML];
 
  const boardBox=(index)=> gameboard[index]; //reach index array gameboard
+ const gameboardCheck =()=>{  if (
+      (square[0].innerHTML === "X"  && square[3].innerHTML === "X" && square[6].innerHTML === "X")|| 
+      (square[1].innerHTML === "X"  && square[4].innerHTML === "X" && square[7].innerHTML === "X") || 
+      (square[2].innerHTML === "X"  && square[5].innerHTML === "X" && square[8].innerHTML === "X") ||
+      (square[0].innerHTML === "X"  && square[4].innerHTML === "X" && square[8].innerHTML === "X") ||
+      (square[2].innerHTML === "X"  && square[4].innerHTML === "X" && square[6].innerHTML === "X") ||
+      (square[0].innerHTML === "X"  && square[1].innerHTML === "X" && square[2].innerHTML === "X") ||
+      (square[3].innerHTML === "X"  && square[4].innerHTML === "X" && square[5].innerHTML === "X") ||
+      (square[6].innerHTML === "X"  && square[7].innerHTML === "X" && square[9].innerHTML === "X"))
+      {
+        return player1wins = true
+      }
+     else if (
+      (square[0].innerHTML === "O"  && square[3].innerHTML === "O" && square[6].innerHTML === "O")|| 
+      (square[1].innerHTML === "O"  && square[4].innerHTML === "O" && square[7].innerHTML === "O") || 
+      (square[2].innerHTML === "O"  && square[5].innerHTML === "O" && square[8].innerHTML === "O") ||
+      (square[0].innerHTML === "O"  && square[4].innerHTML === "O" && square[8].innerHTML === "O") ||
+      (square[2].innerHTML === "O"  && square[4].innerHTML === "O" && square[6].innerHTML === "O") ||
+      (square[0].innerHTML === "O"  && square[1].innerHTML === "O" && square[2].innerHTML === "O") ||
+      (square[3].innerHTML === "O"  && square[4].innerHTML === "O" && square[5].innerHTML === "O") ||
+      (square[6].innerHTML === "O"  && square[7].innerHTML === "O" && square[9].innerHTML === "O")){
+        return player2wins =true;
+      }}
 return{
-    boardBox,
+    boardBox, gameboardCheck,
   }
 
 })();
 
-let currentPlayer;
+
 //Player Object ( returns "X" and "O")
 const Player= ()=>{
     const getName =()=>  currentPlayer;
@@ -49,71 +79,45 @@ return{ _renderDisplay
 }
 })();
 
-  
-// Event listerer for click and render "X" "O" 
-  // document.addEventListener("click", function(e){
-   
-  //   const target = e.target.closest(".square"); 
-  //   if(target){
-       
+
+//Click event listener for squares 
+document.addEventListener("click", function(e){
     
-  //     if(currentPlayer === "playerTwo")
-  //      {
-  //       if(e.target.innerHTML === "")
-  //       {
-  //           e.target.innerHTML = "O"
-            
-  //       }
-  //       currentPlayer="playerOne"
-  //     }  
-  //     else
-  //     {
-  //         if(e.target.innerHTML === "")
-  //         {
-  //             e.target.innerHTML = "X"
-  //             currentPlayer = "playerTwo"
-  //         };
-  //     }
-
-  //   }
-  // }
-  
-  // );
-
-  document.addEventListener("click", function(e){
     const target = e.target.closest(".square"); 
     if(target)
+    
     var squareID = parseInt((e.target).id)
     {
+      
       if(e.target.innerHTML === "")
       
         {
           
           square[squareID].innerHTML = displayController._renderDisplay();
+          score(squareID)
         }
-  
+       
     }
+
   });
 
 
-  // Game Logic & Score
-  const getScore = ()=> 
-  var score= ()=>{
-    if(
-(square[0].innerHTML ===square[3].innerHTML&&square[0].innerHTML === square[6].innerHTML) || 
-(square[1].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[7].innerHTML) || 
-(square[2].innerHTML ===square[5].innerHTML&&square[5].innerHTML === square[8].innerHTML) ||
-(square[0].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[8].innerHTML) ||
-(square[2].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[6].innerHTML) ||
-(square[0].innerHTML ===square[1].innerHTML&&square[1].innerHTML === square[2].innerHTML) ||
-(square[3].innerHTML ===square[4].innerHTML&&square[4].innerHTML === square[5].innerHTML) ||
-(square[6].innerHTML ===square[7].innerHTML&&square[7].innerHTML === square[8].innerHTML)){
-    if(square.innerHTML === "X"){
-        player1wins ++
-    }
-    elseif(square.innerHTML === "O"){
-        player2wins ++
-    }
-}
-return score
-  }
+  // Check Score
+  const score = ()=>{
+    Gameboard.gameboardCheck()
+
+          if(player1wins){
+           displayBoard.innerHTML= "player 1 wins" ;
+
+                    }
+          else if(player2wins){
+            displayBoard.innerHTML= "player 2 wins" ;
+                    }
+     
+                  }
+    
+  //Restart
+  restartButton.addEventListener('click',function(e){
+    for(let i=0; i<)
+  })
+
