@@ -93,6 +93,7 @@ document.addEventListener("click", function(e){
       
         {
           
+          // square[squareID].innerHTML = displayController._renderDisplay();
           square[squareID].innerHTML = displayController._renderDisplay();
           score(squareID)
         }
@@ -114,10 +115,17 @@ document.addEventListener("click", function(e){
             displayBoard.innerHTML= "player 2 wins" ;
                     }
      
-                  }
-    
+                 
+          else{
+            displayBoard.innerHTML=""
+          }
+        }
   //Restart
   restartButton.addEventListener('click',function(e){
-    for(let i=0; i<)
+    for(let i=0; i<9 ; i++){
+        square[i].innerHTML="";
+        displayBoard.innerHTML=""
+        currentPlayer=""
+    }
   })
 
