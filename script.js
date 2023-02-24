@@ -9,9 +9,7 @@ let currentPlayer;
 // Gameboard Object Module
 var Gameboard = (()=> {
 
-var gameboard = [square[0].innerHTML,square[1].innerHTML,square[2].innerHTML
-                ,square[3].innerHTML,square[4].innerHTML,square[5].innerHTML
-                ,square[6].innerHTML,square[7].innerHTML,square[8].innerHTML];
+var gameboard = ['','','','','','','','',''];
 
  const boardBox=(index)=> gameboard[index]; //reach index array gameboard
  const gameboardCheck =()=>{  if (
