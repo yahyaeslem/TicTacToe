@@ -1,20 +1,29 @@
+
 body{
  display: flex;
  flex-direction: column;
  gap :10px;
  margin: 10px;
  padding: 10px;
+ background-color: rgba(81, 126, 165, 0.438);
 }
 .display{
 display: flex;
   justify-content: center;
-  align-items: center;
+  align-self: center;
   padding: 10px;
   margin: 10px;
   border: 5px;
-  border-color: aquamarine;
+  color:rgb(28, 45, 61);
   border-style: outset;
+  border-width: 3px;
   gap: 10px;
+  width: 450px;
+  background-color: rgba(147, 176, 201, 0.308);
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: larger;
+  
+
 }
 .display>div>span{
   font-size: 20px;
@@ -27,12 +36,14 @@ display: flex;
     justify-content: center;
     margin: 10px;
     
+   
+    
 }
 .gameboard div{
-  
+  color:rgb(35, 57, 77);
   aspect-ratio: 1;  
-  border-color: black;
-  border-style: solid;
+ font-family: 'Alegreya';
+  border-style: outset;
   
 }
 .square{
@@ -44,12 +55,40 @@ display: flex;
 .displayBoard{
   display: flex;
   justify-content: center;
+  align-self: center;
   align-items: center;
+
   padding: 10px;
   margin: 10px;
   border: 5px;
-  border-color: aquamarine;
+  color:rgb(35, 57, 77);
   border-style: outset;
   gap: 10px;
-  height: 30px;
+  border-width: 1px;
+  height: 50px;
+  width: 250px;
+  background-color: rgba(137, 155, 172, 0.034);;
+  font-size: 20px;
+  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  
+}
+#restartButton{
+  align-self: center;
+  background-color: rgba(132, 156, 177, 0.438);
+  height: 2em;
+  width: 10rem;
+  border-radius: 1px;
+  border-style: outset;
+  border-width: 2px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+  border-color: rgb(125, 135, 145);
+  color: rgb(42, 52, 61);
+  font-weight: 100;
+}
+#restartButton:hover{
+  background-color: rgba(119, 133, 146, 0.486);
+  border-radius: 10px;
 }

@@ -1,9 +1,17 @@
+
+
 const square = document.getElementsByClassName('square');  // every square
 const boardDiv= document.getElementsByClassName('gameboard') // square gameboard
 let winner=""; // variable for winner to display in displayboard
 const displayBoard = document.getElementById('displayBoard');   // div element for displaying the winner
 const restartButton = document.getElementById("restartButton") // restart button
 let currentPlayer;
+let firstPlayer= "PLAYER ONE"
+let secondPlayer= "PLAYER TWO"
+let tie = "IT'S A TIE!!"
+let player1wins =  [firstPlayer]+" "+ "WINS!!"
+let player2wins = [secondPlayer] +" "+"WINS!!"
+
 
 // Gameboard Object Module(array for squares, checks gameboard for win conditions)
 var Gameboard = (()=> {
@@ -15,7 +23,8 @@ let checkCells =()=>{ allCellsFilled = gameboard.every(cell => cell !== ""); ret
  const scoreCheck=()=>{
   checkCells()
   if(allCellsFilled) {
-    winner = "TIE"
+    
+    winner = tie;
     } 
     gameboardCheck(0,3,6)
     gameboardCheck(1,4,7)
@@ -37,22 +46,19 @@ let checkCells =()=>{ allCellsFilled = gameboard.every(cell => cell !== ""); ret
     {
              if(gameboard[a] === gameboard[b] && gameboard[a] === gameboard[c])
              {
-                     
+             
                      if(gameboard[a] === "X" ){
-                                 winner ="Player One wins"
+                                 winner =player1wins
+                                
                                      } 
 
                     else if (gameboard[a] === "O"){
-                              winner = "Player Two wins"
+                              winner = player2wins
+                              
                                      }
              }
-    
-             
-            
-
   }  
 return winner;
-
 } 
 
 
@@ -78,14 +84,17 @@ const Player= ()=>{
    //Gets The sign for whos turn and returns it
     const getSign = ()=> { 
        getName() 
+    
       if(currentPlayer === playerTwo)  // checking turn
       {currentPlayer = playerOne
+       
       return secondSign;
       
       }
       else       // checking turn
       {
       currentPlayer=playerTwo  
+      
       return firstSign ;  
       }
   }
@@ -95,8 +104,8 @@ const Player= ()=>{
     
     let playerOne = "PlayerOne"   //This can be adjusted 
     let playerTwo = "PlayerTwo"
-
-return {getName, getSign};
+    const getPlayer =(player)=> {return player};
+return {getName, getSign, getPlayer};
 }
 
 
@@ -120,12 +129,12 @@ document.addEventListener("click", function(e){
       
       if(e.target.innerHTML === "")
       
-        {
-          
-          
+        {         
          let currentSign= displayController._renderDisplay();
+         
          Gameboard.boardBox(squareID,currentSign)
          Gameboard.render()
+     
           score(squareID)
         }
        
@@ -157,19 +166,16 @@ document.addEventListener("click", function(e){
 
 //prevent click
 const preventClick = ()=>{
-if(displayBoard.innerHTML!= ""){
+if(winner !== ""){
+ 
     e.preventDefault()
-
+  
 }
 }
 
+function display(){
 
-  // gameboard[0] != "" && 
-      // gameboard[1] != "" && 
-      // gameboard[2] != "" &&
-      // gameboard[3] != "" && 
-      // gameboard[4] != "" &&
-      // gameboard[5] != "" && 
-      // gameboard[6] != "" && 
-      // gameboard[7] != "" && 
-      // gameboard[8] != "")
+
+  displayBoard.innerHTML= playerturn
+}
+
